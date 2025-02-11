@@ -86,7 +86,7 @@ public class TaskManager {
     public SubTask updateSubTask(int idSubTask, SubTask subTask){
         if (subTaskMap.containsKey(idSubTask)) {
             subTask.setId(idSubTask);
-            taskMap.put(idSubTask, subTask);
+            subTaskMap.put(idSubTask, subTask);
             this.calculateStatusEpic(subTask.getEpicId());
             return subTask;
         } else {
@@ -103,7 +103,7 @@ public class TaskManager {
     }
 
     //получение подзадачь определенного эпика
-public ArrayList<SubTask> subTasksFotEpic(int epicId){
+public ArrayList<SubTask> getSubTasksForEpic(int epicId){
     ArrayList<SubTask> subTasks = new ArrayList<>();
     ArrayList<Integer> subTasksId = epicMap.get(epicId).getSubTasksId();
     for(int subTaskId: subTasksId){
@@ -152,8 +152,10 @@ public ArrayList<SubTask> subTasksFotEpic(int epicId){
                    epic.addSubTasksId(subTask.getId());
                }
             }
-            taskMap.put(idEpic, epic);
+            epicMap.put(idEpic, epic);
+            this.calculateStatusEpic(idEpic);
             return epic;
+
         } else {
             return null;
         }

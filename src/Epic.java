@@ -6,8 +6,8 @@ import java.util.HashMap;
 public class Epic extends Task {
     private ArrayList<Integer> subTasksId;
 
-    public Epic(String name, String description, Status status) {
-        super(name, description, status);
+    public Epic(String name, String description) {
+        super(name, description, Status.NEW);
         this.subTasksId = new ArrayList<>();
     }
 
@@ -45,5 +45,16 @@ public class Epic extends Task {
             this.setStatus(Status.IN_PROGRESS);
 
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Epic{" +
+                "name='" + getName() + '\'' +
+                ", description='" + getDescription() + '\'' +
+                ", id=" + getId() +
+                ", status=" + getStatus() +
+                ", subTasksId=" + subTasksId +
+                '}';
     }
 }
