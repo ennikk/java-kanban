@@ -24,8 +24,8 @@ public class Main {
         System.out.println(taskManager.listTask());
         System.out.println(taskManager.listEpic());
         System.out.println(taskManager.listSubTask());
-        System.out.println();
-        System.out.println();
+        //System.out.println();
+       // System.out.println();
 
 
         //меняем  задачи
@@ -44,20 +44,20 @@ public class Main {
         //меняем описание в эпике
         taskManager.updateEpic(3, new Epic("Поменять лампочку в авто","купил, но возможн не ту"));
 
-        System.out.println(taskManager.listTask());
-        System.out.println(taskManager.getEpicById(2));
-        System.out.println(taskManager.getSubTasksForEpic(2));
-        System.out.println(taskManager.getEpicById(3));
-        System.out.println(taskManager.getSubTasksForEpic(3));
-        System.out.println();
-        System.out.println();
+        //System.out.println(taskManager.listTask());
+       // System.out.println(taskManager.getEpicById(2));
+        //System.out.println(taskManager.getSubTasksForEpic(2));
+        //System.out.println(taskManager.getEpicById(3));
+        //System.out.println(taskManager.getSubTasksForEpic(3));
+        //System.out.println();
+        //System.out.println();
 
         //удаление
-        taskManager.deleteEpic(2);
-        taskManager.deleteTask(1);
-        System.out.println(taskManager.listTask());
-        System.out.println(taskManager.listEpic());
-        System.out.println(taskManager.listSubTask());
+        //taskManager.deleteEpic(2);
+       // taskManager.deleteTask(1);
+        //System.out.println(taskManager.listTask());
+        //System.out.println(taskManager.listEpic());
+        //System.out.println(taskManager.listSubTask());
 
 
 
