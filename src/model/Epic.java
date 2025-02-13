@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 
 //должен хранить инфу о всех подзадачах,наверное списком id
@@ -19,7 +21,7 @@ public class Epic extends Task {
 
     @Override
     public String toString() {
-        return "Epic{" +
+        return "model.Epic{" +
                 "name='" + getName() + '\'' +
                 ", description='" + getDescription() + '\'' +
                 ", id=" + getId() +
