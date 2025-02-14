@@ -84,5 +84,6 @@ public class Main {
         System.out.println(taskManager.getTaskList());
         System.out.println(taskManager.getEpicList());
         System.out.println(taskManager.getSubTaskList());
+
     }
 }

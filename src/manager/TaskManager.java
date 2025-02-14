@@ -19,13 +19,13 @@ public class TaskManager {
         this.epicMap = new HashMap<>();
     }
 
-     private int getCounter() {
+    private int getCounter() {
         return counter++;
     }
 
     //создать новую задачу
     public int newTask(Task task) {
-        task.setId(this.getCounter());
+        task.setId(getCounter());
         taskMap.put(task.getId(), task);
         return task.getId();
     }
@@ -44,7 +44,7 @@ public class TaskManager {
 
     //получение списка задач
     public ArrayList<Task> getTaskList() {
-        return  new ArrayList<>(taskMap.values());
+        return new ArrayList<>(taskMap.values());
     }
 
     //получение задачи по id
@@ -65,10 +65,10 @@ public class TaskManager {
     //создать новую подзадачу
     public int newSubTask(SubTask subTask) {
         if (epicMap.containsKey(subTask.getEpicId())) {
-            subTask.setId(this.getCounter());
+            subTask.setId(getCounter());
             subTaskMap.put(subTask.getId(), subTask);
             epicMap.get(subTask.getEpicId()).addSubTasksId(subTask.getId());
-            this.calculateStatusEpic(subTask.getEpicId());
+            calculateStatusEpic(subTask.getEpicId());
             return subTask.getId();
         }
         return -1;
@@ -78,7 +78,7 @@ public class TaskManager {
     public SubTask updateSubTask(SubTask subTask) {
         if (subTaskMap.containsKey(subTask.getId())) {
             subTaskMap.put(subTask.getId(), subTask);
-            this.calculateStatusEpic(subTask.getEpicId());
+            calculateStatusEpic(subTask.getEpicId());
             return subTask;
         } else {
             return null;
@@ -108,8 +108,9 @@ public class TaskManager {
     //удаление всех подзадач
     public void deleteAllSubTask() {
         subTaskMap.clear();
-        for(int idEpic : epicMap.keySet()){
-            calculateStatusEpic(idEpic);
+        for (Epic epic : epicMap.values()) {
+            epic.setStatus(Status.NEW);
+            epic.getSubTasksId().clear();
         }
     }
 
@@ -122,7 +123,7 @@ public class TaskManager {
 
     //создать новый эпик
     public int newEpic(Epic epic) {
-        epic.setId(this.getCounter());
+        epic.setId(getCounter());
         epicMap.put(epic.getId(), epic);
         return epic.getId();
     }
@@ -182,14 +183,14 @@ public class TaskManager {
                 return;
             } else if (subTask.getStatus() == Status.DONE) {
                 completedTasksCounter += 1;
-            } else if (subTask.getStatus() == Status.NEW){
+            } else if (subTask.getStatus() == Status.NEW) {
                 newTasksCounter += 1;
             }
         }
         if (subTasksId.size() == completedTasksCounter) {
             epic.setStatus(Status.DONE);
 
-        } else if (subTasksId.size() == newTasksCounter){
+        } else if (subTasksId.size() == newTasksCounter) {
             epic.setStatus(Status.NEW);
 
         }
