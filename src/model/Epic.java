@@ -11,8 +11,13 @@ public class Epic extends Task {
         super(name, description, Status.NEW);
     }
 
-    public void addSubTasksId(int subTasksId) {
-        this.subTasksId.add(subTasksId);
+    public int addSubTasksId(int subTasksId) {
+        if (this.getId() == subTasksId) {
+            return -1;
+        } else {
+            this.subTasksId.add(subTasksId);
+            return subTasksId;
+        }
     }
 
     public ArrayList<Integer> getSubTasksId() {
