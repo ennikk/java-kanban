@@ -1,10 +1,12 @@
+
+import manager.Managers;
 import manager.TaskManager;
 import model.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        TaskManager taskManager = new TaskManager();
+        TaskManager taskManager = Managers.getDefaultTaskManager();
 
         //создаем две задачи
         Task task1 = new Task("Купить лего набор", "Малому нужен набор лего звездные войны" +
@@ -84,6 +86,43 @@ public class Main {
         System.out.println(taskManager.getTaskList());
         System.out.println(taskManager.getEpicList());
         System.out.println(taskManager.getSubTaskList());
+        System.out.println();
+        System.out.println();
 
+        taskManager.getTaskById(0);
+        taskManager.getTaskById(0);
+        taskManager.getTaskById(0);
+        taskManager.getTaskById(0);
+        taskManager.getTaskById(0);
+        taskManager.getTaskById(0);
+        taskManager.getTaskById(0);
+        taskManager.getTaskById(0);
+        taskManager.getTaskById(0);
+
+        System.out.println(taskManager.getHistoryManager());
+
+    }
+    private static void printAllTasks(TaskManager manager) {
+        System.out.println("Задачи:");
+        for (Task task : manager.getTaskList()) {
+            System.out.println(task);
+        }
+        System.out.println("Эпики:");
+        for (Task epic : manager.getEpicList()) {
+            System.out.println(epic);
+
+            for (Task task : manager.getSubTasksForEpic(epic.getId())) {
+                System.out.println("--> " + task);
+            }
+        }
+        System.out.println("Подзадачи:");
+        for (Task subtask : manager.getSubTaskList()) {
+            System.out.println(subtask);
+        }
+
+        System.out.println("История:");
+        for (Task task : manager.getHistoryManager()) {
+            System.out.println(task);
+        }
     }
 }
