@@ -11,8 +11,8 @@ class EpicTest {
 private Epic epic;
 
     @BeforeEach
-    void BeforeEach(){
-        epic = new Epic("Test name","Test discription");
+    void beforeEach(){
+        epic = new Epic("Test name","Test description");
     }
     @Test
     void addSubTasksId() {
@@ -26,5 +26,14 @@ private Epic epic;
         epic.addSubTasksId(2);
         epic.addSubTasksId(3);
         assertEquals(3,epic.getSubTasksId().size(), "Неверное количество подзадач.");
+    }
+
+    @Test
+    void isEpicsEqualse(){
+        Epic epic1 = new Epic("Test name","Test description");
+        epic.setId(1);
+        epic1.setId(1);
+
+        assertEquals(epic1, epic, "Задачи должны быть равны.");
     }
 }
