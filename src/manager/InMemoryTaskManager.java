@@ -132,6 +132,7 @@ public class InMemoryTaskManager implements TaskManager {
     public void deleteSubTask(int id) {
         int idEpic = subTaskMap.get(id).getEpicId();
         subTaskMap.remove(id);
+        epicMap.get(idEpic).getSubTasksId().remove(Integer.valueOf(id));
         calculateStatusEpic(idEpic);
     }
 
@@ -214,6 +215,8 @@ public class InMemoryTaskManager implements TaskManager {
         } else if (subTasksId.size() == newTasksCounter) {
             epic.setStatus(Status.NEW);
 
+        } else {
+            epic.setStatus(Status.IN_PROGRESS);
         }
     }
 
@@ -239,7 +242,9 @@ public class InMemoryTaskManager implements TaskManager {
             newSubTask.setId(subTask.getId());
             return newSubTask;
         } else if (task != null) {
-            return new Task(task.getName(), task.getDescription(), task.getStatus());
+            Task newTask = new Task(task.getName(), task.getDescription(), task.getStatus());
+            newTask.setId(task.getId());
+            return newTask;
         } else {
             return null;
         }
