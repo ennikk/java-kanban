@@ -39,6 +39,10 @@ public class Main {
         System.out.println(taskManager.getSubTaskList());
         System.out.println();
         System.out.println();
+        taskManager.getTaskById(0);
+        taskManager.getTaskById(0);
+        taskManager.getTaskById(0);
+
 
 // для обновления задачь создадим новые объекты -- ~копии уже существующих c изменениями
         Task newTask1 = new Task("Купить лего набор", "Малому нужен набор лего звездные войны" +
@@ -64,6 +68,11 @@ public class Main {
         taskManager.updateTask(newTask1);
         taskManager.updateTask(newTask2);
 
+        System.out.println();
+        System.out.println();
+        System.out.println(taskManager.getHistoryManager());
+        System.out.println();
+        System.out.println();
         //меняем подзадачи
         taskManager.updateSubTask(newSubTask1);
         taskManager.updateSubTask(newSubTask2);
@@ -92,12 +101,7 @@ public class Main {
         taskManager.getTaskById(0);
         taskManager.getTaskById(0);
         taskManager.getTaskById(0);
-        taskManager.getTaskById(0);
-        taskManager.getTaskById(0);
-        taskManager.getTaskById(0);
-        taskManager.getTaskById(0);
-        taskManager.getTaskById(0);
-        taskManager.getTaskById(0);
+
 
         System.out.println(taskManager.getHistoryManager());
 

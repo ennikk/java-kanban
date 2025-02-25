@@ -218,10 +218,32 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     public void addToHistoryManager(Task anyTask){
-        historyManager.addToHistory(anyTask);
+        historyManager.addToHistory(copyTask(anyTask));
     }
+
     public ArrayList<Task> getHistoryManager(){
         return historyManager.getHistory();
+    }
+
+    public static Task copyTask(Task task){
+
+        if(task instanceof Epic epic){
+            Epic newEpic = new Epic(epic.getName(), epic.getDescription());
+            newEpic.setId(epic.getId());
+            for(int subTaskId: epic.getSubTasksId()){
+                newEpic.addSubTasksId(subTaskId);
+            }
+            return newEpic;
+        } else if (task instanceof SubTask subTask) {
+            SubTask newSubTask = new SubTask(subTask.getName(), subTask.getDescription(), subTask.getStatus(),subTask.getEpicId());
+            newSubTask.setId(subTask.getId());
+            return newSubTask;
+        } else if (task != null) {
+            return new Task(task.getName(), task.getDescription(), task.getStatus());
+        } else {
+            return null;
+        }
+
     }
 }
 
