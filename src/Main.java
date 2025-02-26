@@ -70,7 +70,7 @@ public class Main {
 
         System.out.println();
         System.out.println();
-        System.out.println(taskManager.getHistoryManager());
+        System.out.println(taskManager.getHistory());
         System.out.println();
         System.out.println();
         //меняем подзадачи
@@ -103,7 +103,7 @@ public class Main {
         taskManager.getTaskById(0);
 
 
-        System.out.println(taskManager.getHistoryManager());
+        System.out.println(taskManager.getHistory());
 
     }
     private static void printAllTasks(TaskManager manager) {
@@ -125,7 +125,7 @@ public class Main {
         }
 
         System.out.println("История:");
-        for (Task task : manager.getHistoryManager()) {
+        for (Task task : manager.getHistory()) {
             System.out.println(task);
         }
     }

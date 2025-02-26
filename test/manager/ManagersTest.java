@@ -6,7 +6,6 @@ import model.Task;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,7 +17,7 @@ class ManagersTest {
         assertNotNull(taskManager.getTaskList(),"Ошибка инициализации");
         assertNotNull(taskManager.getSubTaskList(),"Ошибка инициализации");
         assertNotNull(taskManager.getEpicList(),"Ошибка инициализации");
-        assertNotNull(taskManager.getHistoryManager(),"Ошибка инициализации");
+        assertNotNull(taskManager.getHistory(),"Ошибка инициализации");
 
         ArrayList<Task> emptyTaskList = new ArrayList<>();
         ArrayList<SubTask> emptySubTaskList = new ArrayList<>();
@@ -27,7 +26,7 @@ class ManagersTest {
         assertEquals(emptyTaskList, taskManager.getTaskList(),"Ошибка инициализации");
         assertEquals(emptySubTaskList, taskManager.getSubTaskList(),"Ошибка инициализации");
         assertEquals(emptyEpicList, taskManager.getEpicList(),"Ошибка инициализации");
-        assertEquals(emptyHistory, taskManager.getHistoryManager(),"Ошибка инициализации");
+        assertEquals(emptyHistory, taskManager.getHistory(),"Ошибка инициализации");
 
     }
 

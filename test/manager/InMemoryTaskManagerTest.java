@@ -4,7 +4,6 @@ import model.Epic;
 import model.Status;
 import model.Task;
 import model.SubTask;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -196,14 +195,14 @@ class InMemoryTaskManagerTest {
         taskManager.getSubTaskById(subTask2Id);
         taskManager.getSubTaskById(subTask3Id);
 
-        assertEquals(5, taskManager.getHistoryManager().size(),"Не верно работает запись в историю.");
+        assertEquals(5, taskManager.getHistory().size(),"Не верно работает запись в историю.");
 
         Task newTask = new Task("Task newName", "Task newDescription", Status.DONE);
         newTask.setId(taskId);
         taskManager.updateTask(newTask);
 
-        assertEquals(newTask.getId(), taskManager.getHistoryManager().get(0).getId(), "Разные Id");
-        assertNotEquals(newTask, taskManager.getHistoryManager().get(0),"Задача в истории изменилась");
+        assertEquals(newTask.getId(), taskManager.getHistory().get(0).getId(), "Разные Id");
+        assertNotEquals(newTask, taskManager.getHistory().get(0),"Задача в истории изменилась");
 
     }
 }

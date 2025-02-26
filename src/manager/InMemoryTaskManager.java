@@ -220,15 +220,16 @@ public class InMemoryTaskManager implements TaskManager {
         }
     }
 
-    public void addToHistoryManager(Task anyTask){
+    private void addToHistoryManager(Task anyTask){
         historyManager.addToHistory(copyTask(anyTask));
     }
 
-    public ArrayList<Task> getHistoryManager(){
+@Override
+    public ArrayList<Task> getHistory(){
         return historyManager.getHistory();
     }
 
-    public static Task copyTask(Task task){
+    private static Task copyTask(Task task){
 
         if(task instanceof Epic epic){
             Epic newEpic = new Epic(epic.getName(), epic.getDescription());
@@ -237,17 +238,7 @@ public class InMemoryTaskManager implements TaskManager {
                 newEpic.addSubTasksId(subTaskId);
             }
             return newEpic;
-        } else if (task instanceof SubTask subTask) {
-            SubTask newSubTask = new SubTask(subTask.getName(), subTask.getDescription(), subTask.getStatus(),subTask.getEpicId());
-            newSubTask.setId(subTask.getId());
-            return newSubTask;
-        } else if (task != null) {
-            Task newTask = new Task(task.getName(), task.getDescription(), task.getStatus());
-            newTask.setId(task.getId());
-            return newTask;
-        } else {
-            return null;
-        }
+        } else return task;
 
     }
 }

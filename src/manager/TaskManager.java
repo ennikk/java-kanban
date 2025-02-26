@@ -66,5 +66,5 @@ public interface TaskManager {
     //удаление эпика по id
     void deleteEpic(int id);
 
-    ArrayList<Task> getHistoryManager();
+    ArrayList<Task> getHistory();
 }
