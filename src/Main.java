@@ -101,6 +101,7 @@ public class Main {
         taskManager.getTaskById(0);
         taskManager.getTaskById(0);
         taskManager.getTaskById(0);
+        taskManager.getTaskById(1);
 
 
         System.out.println(taskManager.getHistory());
