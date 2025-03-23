@@ -181,10 +181,10 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void deleteAllEpic() {
-        for (Integer id : epicMap.keySet() ){
+        for (Integer id : epicMap.keySet()) {
             historyManager.removeTask(id);
         }
-        for (Integer id : subTaskMap.keySet() ){
+        for (Integer id : subTaskMap.keySet()) {
             historyManager.removeTask(id);
         }
         epicMap.clear();
@@ -237,21 +237,21 @@ public class InMemoryTaskManager implements TaskManager {
         }
     }
 
-    private void addToHistoryManager(Task anyTask){
+    private void addToHistoryManager(Task anyTask) {
         historyManager.addToHistory(copyTask(anyTask));
     }
 
-@Override
-    public ArrayList<Task> getHistory(){
+    @Override
+    public ArrayList<Task> getHistory() {
         return historyManager.getHistory();
     }
 
-    private static Task copyTask(Task task){
+    private static Task copyTask(Task task) {
 
-        if(task instanceof Epic epic){
+        if (task instanceof Epic epic) {
             Epic newEpic = new Epic(epic.getName(), epic.getDescription());
             newEpic.setId(epic.getId());
-            for(int subTaskId: epic.getSubTasksId()){
+            for (int subTaskId : epic.getSubTasksId()) {
                 newEpic.addSubTasksId(subTaskId);
             }
             return newEpic;

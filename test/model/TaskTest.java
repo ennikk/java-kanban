@@ -9,25 +9,26 @@ class TaskTest {
     private Task task;
 
     @BeforeEach
-    void beforeEach(){
-        task = new Task("Test name","Test description",Status.NEW);
+    void beforeEach() {
+        task = new Task("Test name", "Test description", Status.NEW);
     }
+
     @Test
     void getName() {
-        String checkName =  "Test name";
+        String checkName = "Test name";
         assertEquals(checkName, task.getName(), " Не правильно выводится имя");
     }
 
     @Test
     void setName() {
         task.setName("New name");
-        String checkName =  "New name";
+        String checkName = "New name";
         assertEquals(checkName, task.getName(), "Ошибка в изменении имени.");
     }
 
     @Test
     void getDescription() {
-        String checkDescription =  "Test description";
+        String checkDescription = "Test description";
         assertEquals(checkDescription, task.getDescription(), " Не правильно выводится описание.");
 
     }
@@ -35,7 +36,7 @@ class TaskTest {
     @Test
     void setDescription() {
         task.setDescription("New description");
-        String checkDescription =  "New description";
+        String checkDescription = "New description";
         assertEquals(checkDescription, task.getDescription(), "Ошибка в изменении Description.");
     }
 
@@ -43,7 +44,7 @@ class TaskTest {
     void setAndGetId() {
         task.setId(1);
         int checkId = 1;
-        assertEquals(checkId,task.getId(),"Ошибка в установке ID.");
+        assertEquals(checkId, task.getId(), "Ошибка в установке ID.");
     }
 
     @Test
@@ -54,8 +55,8 @@ class TaskTest {
     }
 
     @Test
-    void isTaskEqualse(){
-        Task task1 = new Task("Test name","Test description", Status.NEW);
+    void isTaskEqualse() {
+        Task task1 = new Task("Test name", "Test description", Status.NEW);
         task.setId(1);
         task1.setId(1);
 
