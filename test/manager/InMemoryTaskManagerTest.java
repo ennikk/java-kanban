@@ -204,5 +204,19 @@ class InMemoryTaskManagerTest {
         assertEquals(newTask.getId(), taskManager.getHistory().get(0).getId(), "Разные Id");
         assertNotEquals(newTask, taskManager.getHistory().get(0),"Задача в истории изменилась");
 
+        //проверяем новый функционал
+        //запись
+        taskManager.getSubTaskById(subTask1Id);
+        assertEquals(5, taskManager.getHistory().size(),"Не верно работает запись в историю.");
+        assertEquals(subTask1, taskManager.getHistory().getLast(),"Не верно работает запись в историю.");
+
+        //удаление
+        taskManager.deleteSubTask(subTask1Id);
+        assertEquals(4, taskManager.getHistory().size(),"Не верно работает удаление из историю.");
+        assertNotEquals(subTask1, taskManager.getHistory().getLast(),"Не верно работает удаление из историю.");
+
+        taskManager.deleteAllEpic();
+        assertEquals(1, taskManager.getHistory().size(),"Не верно работает удаление из историю.");
+        assertEquals(task, taskManager.getHistory().getLast(),"Не верно работает удаление из историю.");
     }
 }
