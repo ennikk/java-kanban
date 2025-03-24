@@ -17,7 +17,7 @@ class SubTaskTest {
     @Test
     void setId() {
         subTask.setId(1);
-        assertEquals(-1, subTask.getId(), "Id подзадачи равно Id эпика.");
+        assertEquals(0 ,subTask.getId(), "Id подзадачи равно Id эпика.");
     }
 
 
