@@ -8,12 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class EpicTest {
-private Epic epic;
+    private Epic epic;
 
     @BeforeEach
-    void beforeEach(){
-        epic = new Epic("Test name","Test description");
+    void beforeEach() {
+        epic = new Epic("Test name", "Test description");
     }
+
     @Test
     void addSubTasksId() {
         epic.setId(1);
@@ -25,12 +26,12 @@ private Epic epic;
         epic.addSubTasksId(1);
         epic.addSubTasksId(2);
         epic.addSubTasksId(3);
-        assertEquals(3,epic.getSubTasksId().size(), "Неверное количество подзадач.");
+        assertEquals(3, epic.getSubTasksId().size(), "Неверное количество подзадач.");
     }
 
     @Test
-    void isEpicsEqualse(){
-        Epic epic1 = new Epic("Test name","Test description");
+    void isEpicsEqualse() {
+        Epic epic1 = new Epic("Test name", "Test description");
         epic.setId(1);
         epic1.setId(1);
 

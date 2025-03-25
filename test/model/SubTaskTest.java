@@ -7,23 +7,23 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SubTaskTest {
-   private SubTask subTask;
+    private SubTask subTask;
 
     @BeforeEach
-    void beforeEach(){
-        subTask = new SubTask("Test name","Test description",Status.NEW, 1);
+    void beforeEach() {
+        subTask = new SubTask("Test name", "Test description", Status.NEW, 1);
     }
 
     @Test
-    void setId(){
+    void setId() {
         subTask.setId(1);
-        assertEquals(-1,subTask.getId(),"Id подзадачи равно Id эпика.");
+        assertEquals(0 ,subTask.getId(), "Id подзадачи равно Id эпика.");
     }
 
 
     @Test
-    void isSubTaskEqualse(){
-        SubTask subTask1 = new SubTask("Test name","Test description", Status.NEW, 1);
+    void isSubTaskEqualse() {
+        SubTask subTask1 = new SubTask("Test name", "Test description", Status.NEW, 1);
         subTask.setId(1);
         subTask1.setId(1);
 

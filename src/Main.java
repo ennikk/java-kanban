@@ -17,9 +17,9 @@ public class Main {
         taskManager.newTask(task2);
 
         //создаем два эпика
-        Epic epic1 = new Epic("Сделать ремонт","страшно, очень страшно, если бы мы знали что" +
+        Epic epic1 = new Epic("Сделать ремонт", "страшно, очень страшно, если бы мы знали что" +
                 " это такое...");
-        Epic epic2 = new Epic("Поменять лампочку в машине","Нужно всетаки это сделать");
+        Epic epic2 = new Epic("Поменять лампочку в машине", "Нужно всетаки это сделать");
         taskManager.newEpic(epic1);
         taskManager.newEpic(epic2);
 
@@ -51,7 +51,7 @@ public class Main {
         Task newTask2 = new Task("Закончить спринт", "ускорился", Status.IN_PROGRESS);
         newTask2.setId(task2.getId());
 
-        Epic newEpic2 = new Epic("Поменять лампочку в авто","купил, но возможн не ту");
+        Epic newEpic2 = new Epic("Поменять лампочку в авто", "купил, но возможн не ту");
         newEpic2.setId(epic2.getId());
 
         SubTask newSubTask1 = new SubTask("C счего начать?", "въехать в стройку",
@@ -101,11 +101,13 @@ public class Main {
         taskManager.getTaskById(0);
         taskManager.getTaskById(0);
         taskManager.getTaskById(0);
+        taskManager.getTaskById(1);
 
 
         System.out.println(taskManager.getHistory());
 
     }
+
     private static void printAllTasks(TaskManager manager) {
         System.out.println("Задачи:");
         for (Task task : manager.getTaskList()) {
